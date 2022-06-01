@@ -16,7 +16,7 @@ library Consts {
 
     // Lock period
     uint256 public constant SEED_LOCK_PERIOD = 3 * 30 days + 9 days;
-    uint256 public constant PRIVATE_LOCK_PERIOD = 45 days + 6 days;
+    uint256 public constant PRIVATE_LOCK_PERIOD = 2 * 30 days + 6 days;
     uint256 public constant TEAM_LOCK_PERIOD = 7 * 30 days;
     uint256 public constant ADVISOR_LOCK_PERIOD = 3 * 30 days;
     uint256 public constant P2E_LOCK_PERIOD = 0;

@@ -269,6 +269,7 @@ contract('IMP', (accounts) => {
             await advanceTimeAndBlock((3 * 30 + 9) * DAY);
             await token.claim(AllocationGroup.Seed, { from: accounts[1], gas: 5000000, gasPrice: 500000000 });
 
+            await advanceTimeAndBlock(21 * DAY);
             for (let i = 0; i < 92; i++) {
                 await advanceTimeAndBlock(7 * DAY);
                 await token.claim(AllocationGroup.Seed, { from: accounts[1], gas: 5000000, gasPrice: 500000000 });
@@ -300,7 +301,7 @@ contract('IMP', (accounts) => {
             const lockedBalanceBefore = await token.getLockedBalance(accounts[1], AllocationGroup.Private);
             const currentBalanceBefore = await token.balanceOf(accounts[1]);
 
-            await advanceTimeAndBlock((45 + 6) * DAY);
+            await advanceTimeAndBlock((2 * 30 + 6) * DAY);
             await token.claim(AllocationGroup.Private, { from: accounts[1], gas: 5000000, gasPrice: 500000000 });
 
             for (let i = 0; i < 80; i++) {
@@ -524,7 +525,7 @@ contract('IMP', (accounts) => {
             expect(currentBalanceBefore.toString()).to.equal(lockedBalanceAfter.toString());
         })
 
-    //     // seed: 0% after 3 months, other for 40 months
+        // seed: 0% after 3 months, other for 40 months
         it("Farming group", async () => {
             const participants = [accounts[1]];
             const balances = [Math.floor(Math.random() * 100000)];
@@ -643,7 +644,8 @@ contract('IMP', (accounts) => {
 
             await advanceTimeAndBlock((30 * 3 + 9) * DAY);
             await token.distribute(AllocationGroup.Seed, { gas: 5000000, gasPrice: 500000000 });
-
+            
+            await advanceTimeAndBlock(21 * DAY);
             for (let i = 0; i < 92; i++) {
                 await advanceTimeAndBlock(7 * DAY);
                 await token.distribute(AllocationGroup.Seed, { gas: 5000000, gasPrice: 500000000 });
@@ -693,6 +695,7 @@ contract('IMP', (accounts) => {
             await advanceTimeAndBlock((3 * 30 + 9)* DAY);
             await token.distribute(AllocationGroup.Seed, { gas: 5000000, gasPrice: 500000000 });
 
+            await advanceTimeAndBlock(21 * DAY);
             for (let i = 0; i < 92; i++) {
                 await advanceTimeAndBlock(7 * DAY);
                 await token.distribute(AllocationGroup.Seed, { gas: 5000000, gasPrice: 500000000 });

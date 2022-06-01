@@ -259,6 +259,10 @@ contract IMP is ERC20Capped {
     if (group == AllocationGroup.Liquidity) {
       timeUnit = 4 days;
     }
+    // starting month 4 for seed group
+    if (group == AllocationGroup.Seed && epochNumber > 0){
+      lockPeriod += 21 days;
+    }
     uint256 availableEpochTimestamp = lockPeriod + (timeUnit * epochNumber) + initialTimestamp;
 
     return block.timestamp > availableEpochTimestamp;

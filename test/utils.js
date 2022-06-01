@@ -59,7 +59,7 @@ const revertToSnapShot = (id) => {
 const advanceTimeAndBlock = async (time) => {
     await advanceTime(time)
     await advanceBlock()
-    return Promise.resolve(web3.eth.getBlock('latest'))
+    // return Promise.resolve(web3.eth.getBlock('latest'))
 }
 
 const getProposalId = (tx) => {
